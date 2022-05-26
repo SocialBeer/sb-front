@@ -1,8 +1,9 @@
 import styled from 'styled-components'
+import { getUnitAsPixels } from '../../styles/sizes'
 
 export const Container = styled.div`
-  width: 100%;
-  padding: 24px 0;
+  width: ${({ theme }) => theme.sizes.full};
+  padding: ${getUnitAsPixels(3)} 0;
   display: flex;
   background: ${({ theme }) => theme.header.background};
   justify-content: space-between;
@@ -10,7 +11,7 @@ export const Container = styled.div`
 export const LoginSection = styled.div`
   display: flex;
   align-items: center;
-  padding: 8px 12px;
+  padding: ${getUnitAsPixels()} ${getUnitAsPixels(1.5)};
   border-left: 1px solid ${({ theme }) => theme.colors.black15};
-  gap: 12px;
+  gap: ${getUnitAsPixels(1.5)};
 `

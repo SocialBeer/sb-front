@@ -1,7 +1,8 @@
 import styled from 'styled-components'
+import { getUnitAsPixels } from '../../../../styles/sizes'
 
 export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: ${getUnitAsPixels(3)};
 `
