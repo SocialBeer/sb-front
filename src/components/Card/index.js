@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Card as MaterialCard } from '@mui/material'
+
 import { getUnitAsPixels } from '../../styles/sizes'
 
 export const Card = styled(MaterialCard)`

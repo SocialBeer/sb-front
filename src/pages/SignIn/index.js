@@ -1,4 +1,5 @@
 import { Box } from '@mui/material'
+
 import { Card } from '../../components/Card'
 import { FixCenterContainer } from '../../components/containers'
 import { Link } from '../../components/Link'
