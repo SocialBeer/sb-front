@@ -1,13 +1,15 @@
 import { ThemeProvider } from 'styled-components'
-import { AppRouter } from './shared/AppRouter'
+
+import { AppRouter } from './components/AppRouter'
 import { GlobalStyles } from './styles/global'
-import * as styleConstants from './styles/constants'
-import { lightTheme } from './styles/theme/light'
+import { defaultTheme } from './styles/defaultTheme'
+import { colors } from './styles/colors'
+import { sizes } from './styles/sizes'
 
 const App = () => {
   return (
     <>
-      <ThemeProvider {...styleConstants} theme={lightTheme}>
+      <ThemeProvider theme={{ ...defaultTheme, colors, sizes }}>
         <GlobalStyles />
         <AppRouter />
       </ThemeProvider>
