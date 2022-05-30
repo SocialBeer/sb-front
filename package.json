@@ -47,9 +47,9 @@
   },
   "lint-staged": {
     "*.{js,jsx}": [
-      "yarn eslint",
-      "yarn prettier",
-      "git add ."
+      "eslint",
+      "prettier",
+      "git add"
     ]
   },
   "devDependencies": {
