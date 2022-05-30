@@ -46,9 +46,9 @@
     ]
   },
   "lint-staged": {
-    "*.{js,jsx}": [
-      "npx eslint --fix",
-      "npx prettier -w"
+    "*.js": [
+      "eslint --fix",
+      "prettier --write"
     ]
   },
   "devDependencies": {
