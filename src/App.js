@@ -1,4 +1,5 @@
 import { ThemeProvider } from 'styled-components'
+
 import { AppRouter } from './components/AppRouter'
 import { GlobalStyles } from './styles/global'
 import { defaultTheme } from './styles/defaultTheme'

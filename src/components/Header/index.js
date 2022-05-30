@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
+
 import { ReactComponent as Logo } from '../../assets/icons/logo.svg'
 import { Button } from '../Button'
 import { MainWidthContainer } from '../containers'

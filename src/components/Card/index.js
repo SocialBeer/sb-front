@@ -1,8 +1,11 @@
-import { Card as MaterialCard } from '@mui/material'
 import styled from 'styled-components'
+import { Card as MaterialCard } from '@mui/material'
+
+import { getUnitAsPixels } from '../../styles/sizes'
 
 export const Card = styled(MaterialCard)`
-  padding: ${({ padding }) => padding};
-  margin: ${({ margin }) => margin};
-  box-shadow: 0 4px 12px ${({ theme }) => theme.colors.black15} !important;
+  padding: ${({ p }) => p};
+  margin: ${({ m }) => m};
+  box-shadow: 0 ${getUnitAsPixels(0.5)} ${getUnitAsPixels(1.5)}
+    ${({ theme }) => theme.colors.black15} !important;
 `
