@@ -8,6 +8,7 @@ export const defaultTheme = {
   linksColor: colors.pink[500],
   input: {
     main: colors.pink[500],
+    error: colors.red[500],
   },
   buttons: {
     contained: {

@@ -21,7 +21,7 @@ export const SignIn = () => {
           </Card>
         </Box>
         <Box marginTop={getUnitAsPixels(3)}>
-          New to Social Beer? <Link to="/">Join now</Link>
+          New to Social Beer? <Link to="/sign-up">Join now</Link>
         </Box>
       </FixCenterContainer>
     </MainLayout>
