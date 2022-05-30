@@ -21,7 +21,10 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
-    "test": "craco test"
+    "test": "craco test",
+    "lint": "npx eslint ./src",
+    "prettier": "npx prettier ./src",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -41,5 +44,9 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint": "^8.16.0",
+    "eslint-plugin-react": "^7.30.0",
+    "husky": "^8.0.0"
+  }
 }
