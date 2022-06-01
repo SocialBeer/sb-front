@@ -11,13 +11,13 @@ export const getUnitAsPixels = (multiplier = 1) => {
   return pixelate(unit * multiplier)
 }
 
-export const getUnitsAsPixel = (...multipliers) => {
+export const getUnitsAsPixels = (...multipliers) => {
   if (!multipliers.length) {
     return pixelate(unit)
   }
   return multipliers
     .reduce((acc, multiplier) => {
-      return acc + pixelate(unit * multiplier) + ' '
+      return acc + getUnitAsPixels(multiplier) + ' '
     }, '')
     .slice(0, -1)
 }

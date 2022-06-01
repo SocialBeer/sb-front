@@ -13,6 +13,9 @@ export const palette = {
   pink: {
     500: '#e91e63',
   },
+  red: {
+    500: '#d21404',
+  },
 }
 
 export const opacity = {
