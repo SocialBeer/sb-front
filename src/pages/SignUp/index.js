@@ -15,7 +15,7 @@ export const SignUp = () => {
           <Form />
         </Card>
         <Box marginTop={getUnitAsPixels(3)} textAlign="center">
-          Already on LinkedIn? <Link to="/sign-in">Sign in</Link>
+          Already on Social Beer? <Link to="/sign-in">Sign in</Link>
         </Box>
       </Box>
     </MainLayout>
