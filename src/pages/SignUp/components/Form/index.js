@@ -1,3 +1,4 @@
+import * as yup from 'yup'
 import { useFormik } from 'formik'
 
 import { FormContainer } from './styled'
@@ -8,16 +9,25 @@ import { fieldNames, fields } from './constants'
 export const Form = () => {
   const formik = useFormik({
     initialValues: fieldNames.reduce(
-      (acc, name) => ({ ...acc, name: fields[name].defaultValue || '' }),
+      (acc, name) => ({ ...acc, [name]: fields[name].defaultValue || '' }),
       {}
     ),
-    validationSchema: fieldNames.reduce(
-      (acc, name) => ({ ...acc, name: fields[name].getValidation() || {} }),
-      {}
-    ),
+    validationSchema: yup
+      .object()
+      .shape(
+        fieldNames.reduce(
+          (acc, name) => ({ ...acc, [name]: fields[name].getValidation() }),
+          {}
+        )
+      ),
   })
+  console.log(
+    fieldNames.reduce(
+      (acc, name) => ({ ...acc, [name]: fields[name].getValidation() }),
+      {}
+    )
+  )
   const handleSubmit = () => {}
-
   return (
     <FormContainer>
       {fieldNames.map((name) => {
