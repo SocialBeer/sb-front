@@ -24,9 +24,7 @@ export const Form = () => {
     validateOnBlur: false,
     validationSchema,
   })
-  const handleSubmit = () => {
-    console.log(formik.validateForm())
-  }
+  const handleSubmit = () => {}
 
   return (
     <FormContainer>
