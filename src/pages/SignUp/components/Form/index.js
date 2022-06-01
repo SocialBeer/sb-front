@@ -21,12 +21,7 @@ export const Form = () => {
         )
       ),
   })
-  console.log(
-    fieldNames.reduce(
-      (acc, name) => ({ ...acc, [name]: fields[name].getValidation() }),
-      {}
-    )
-  )
+
   const handleSubmit = () => {}
   return (
     <FormContainer>
