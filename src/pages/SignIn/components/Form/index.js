@@ -2,9 +2,12 @@ import * as yup from 'yup'
 import { useFormik } from 'formik'
 
 import { FormContainer } from './styled'
-import { Button } from '../../../../components/Button'
 import { Input } from '../../../../components/Input'
 import { Link } from '../../../../components/Link'
+import { useDispatch } from 'react-redux'
+import { authApi } from '../../../../store/auth/thunks'
+import { useRequestStatus } from '../../../../store'
+import { LoadingButton } from '../../../../components/Button'
 
 const validationSchema = yup.object().shape({
   email: yup
@@ -15,6 +18,10 @@ const validationSchema = yup.object().shape({
 })
 
 export const Form = () => {
+  const dispatch = useDispatch()
+
+  const requestStatus = useRequestStatus([authApi.login.typePrefix])
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -24,7 +31,14 @@ export const Form = () => {
     validateOnBlur: false,
     validationSchema,
   })
-  const handleSubmit = () => {}
+  const handleSubmit = () => {
+    dispatch(
+      authApi.login({
+        username: formik.values.email,
+        password: formik.values.password,
+      })
+    )
+  }
 
   return (
     <FormContainer>
@@ -49,9 +63,13 @@ export const Form = () => {
         helperText={formik.errors.password}
       />
       <Link to="/">Forgot password?</Link>
-      <Button variant="contained" onClick={handleSubmit}>
+      <LoadingButton
+        variant="contained"
+        onClick={handleSubmit}
+        loading={requestStatus.loading[authApi.login.typePrefix]}
+      >
         Sign in
-      </Button>
+      </LoadingButton>
     </FormContainer>
   )
 }
