@@ -1,33 +1,26 @@
-import { useEffect } from 'react'
-import { Routes, Route, useNavigate } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 
 import { SignIn } from '../../pages/SignIn'
 import { SignUp } from '../../pages/SignUp'
 import { useAuth } from '../../store'
 
 export const AppRouter = () => {
-  const navigate = useNavigate()
   const { authenticated } = useAuth()
 
-  useEffect(() => {
-    if (!authenticated) {
-      return navigate('/sign-in')
-    }
-    navigate('/')
-  }, [authenticated])
-
   return (
-    <>
+    <Routes>
       {authenticated ? (
-        <Routes>
-          <Route path="/" element={<>app</>} />
-        </Routes>
+        <>
+          <Route index element={<>app</>} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </>
       ) : (
-        <Routes>
+        <>
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
-        </Routes>
+          <Route path="*" element={<Navigate to="/sign-in" replace />} />
+        </>
       )}
-    </>
+    </Routes>
   )
 }
