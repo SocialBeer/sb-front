@@ -2,10 +2,6 @@ import axios from 'axios'
 
 import { Api } from '../core/Api'
 
-axios.defaults.headers.common = {
-  'Content-Type': 'application/json',
-}
-
 export class AuthService {
   static api_name = 'auth'
 
