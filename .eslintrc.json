@@ -17,6 +17,7 @@
     "react/prop-types": "off",
     "linebreak-style": "off",
     "no-undef": ["off"],
+    "no-unused-vars": "warn",
     "quotes": ["error", "single"],
     "semi": ["error", "never"]
   }

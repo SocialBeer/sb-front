@@ -1,11 +1,16 @@
 import styled, { css } from 'styled-components'
-import { Button as MaterialButton } from '@mui/material'
+import { LoadingButton as MaterialLoadingButton } from '@mui/lab'
 
-export const Button = styled(MaterialButton)`
+export const Button = styled(MaterialLoadingButton)`
   ${(props) => css`
-    background: ${props.theme.buttons[props.variant].background} !important;
-    color: ${props.theme.buttons[props.variant].textColor} !important;
-    border-color: ${props.theme.buttons[props.variant].borderColor} !important;
+    :not(.MuiLoadingButton-loading, .Mui-disabled) {
+      background-color: ${props.theme.buttons[props.variant]
+        .background} !important;
+      color: ${props.theme.buttons[props.variant].textColor} !important;
+      border-color: ${props.theme.buttons[props.variant]
+        .borderColor} !important;
+    }
+
     &:hover {
       background: ${props.theme.buttons[props.variant]
         .hoverBackground} !important;

@@ -26,3 +26,10 @@ export const Input = styled(TextField)`
     border-color: ${({ theme }) => theme.input.error};
   }
 `
+
+export const ErrorMessage = styled.div`
+  color: ${({ theme }) => theme.input.error};
+  height: ${getUnitAsPixels(2)};
+  margin-top: ${({ mt }) => mt};
+  font-size: 14px;
+`

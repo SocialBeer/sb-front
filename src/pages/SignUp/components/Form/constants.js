@@ -11,14 +11,14 @@ export const fields = {
         .required('Please enter an email address.')
         .email('Please enter a valid email.'),
   },
-  firstName: {
+  first_name: {
     label: 'First name',
     type: 'text',
     required: true,
     getValidation: () =>
       yup.string().required('First name is a required field.'),
   },
-  lastName: {
+  last_name: {
     label: 'Last name',
     type: 'text',
     required: true,

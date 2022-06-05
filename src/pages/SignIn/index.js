@@ -12,7 +12,7 @@ export const SignIn = () => {
     <MainLayout>
       <FixCenterContainer>
         <Box marginTop={getUnitAsPixels(3)}>
-          <Card p={getUnitsAsPixels(0, 3, 6, 3)}>
+          <Card p={getUnitsAsPixels(0, 3, 4, 3)}>
             <Heading3>Sign in</Heading3>
             <Box m={getUnitsAsPixels(-3, 0, 4, 0)}>
               <SubHeading>Stay updated on your social beer world</SubHeading>
