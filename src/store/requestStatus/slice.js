@@ -25,7 +25,6 @@ export const requestStatus = createSlice({
         )
       },
       (state, action) => {
-        console.log(action)
         const { type } = action
         const matches = /(.*)\/(pending|fulfilled|rejected)/.exec(type)
         if (!matches) return
