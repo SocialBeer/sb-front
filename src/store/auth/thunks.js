@@ -8,7 +8,7 @@ const login = createAsyncThunk('auth/login', async (request) => {
 
     return response
   } catch (e) {
-    throw e.body
+    throw e.response.data.detail
   }
 })
 
@@ -18,7 +18,7 @@ const registration = createAsyncThunk('auth/registration', async (request) => {
 
     return response
   } catch (e) {
-    throw e.body
+    throw e.response.data.detail
   }
 })
 

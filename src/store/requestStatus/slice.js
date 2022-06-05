@@ -25,13 +25,14 @@ export const requestStatus = createSlice({
         )
       },
       (state, action) => {
+        console.log(action)
         const { type } = action
         const matches = /(.*)\/(pending|fulfilled|rejected)/.exec(type)
         if (!matches) return
         const [, requestName, requestState] = matches
         state.loading[requestName] = requestState === RequestStatus.Pending
         state.error[requestName] =
-          requestState === RequestStatus.Rejected && action.payload
+          requestState === RequestStatus.Rejected && action.error.message
       }
     )
   },

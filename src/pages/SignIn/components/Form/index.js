@@ -2,12 +2,13 @@ import * as yup from 'yup'
 import { useFormik } from 'formik'
 
 import { FormContainer } from './styled'
-import { Input } from '../../../../components/Input'
+import { ErrorMessage, Input } from '../../../../components/Input'
 import { Link } from '../../../../components/Link'
 import { useDispatch } from 'react-redux'
 import { authApi } from '../../../../store/auth/thunks'
 import { useRequestStatus } from '../../../../store'
-import { LoadingButton } from '../../../../components/Button'
+import { Button } from '../../../../components/Button'
+import { getUnitAsPixels } from '../../../../styles/sizes'
 
 const validationSchema = yup.object().shape({
   email: yup
@@ -31,13 +32,16 @@ export const Form = () => {
     validateOnBlur: false,
     validationSchema,
   })
-  const handleSubmit = () => {
-    dispatch(
-      authApi.login({
-        username: formik.values.email,
-        password: formik.values.password,
-      })
-    )
+  const handleSubmit = async () => {
+    const isValid = !Object.values(await formik.validateForm()).length
+
+    if (isValid) {
+      dispatch(
+        authApi.login({
+          ...formik.values,
+        })
+      )
+    }
   }
 
   return (
@@ -60,16 +64,20 @@ export const Form = () => {
         onChange={formik.handleChange}
         value={formik.values.password}
         error={!formik.errors.email && formik.errors.password}
-        helperText={formik.errors.password}
+        helperText={!formik.errors.email && formik.errors.password}
       />
       <Link to="/">Forgot password?</Link>
-      <LoadingButton
+      <Button
         variant="contained"
         onClick={handleSubmit}
         loading={requestStatus.loading[authApi.login.typePrefix]}
       >
         Sign in
-      </LoadingButton>
+      </Button>
+
+      <ErrorMessage mt={getUnitAsPixels(-2)}>
+        {requestStatus.error[authApi.login.typePrefix]}
+      </ErrorMessage>
     </FormContainer>
   )
 }

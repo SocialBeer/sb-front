@@ -4,7 +4,8 @@ import { authApi } from './thunks'
 
 const initialState = {
   authenticated: false,
-  token: null,
+  access_token: null,
+  refresh_token: null,
 }
 
 export const auth = createSlice({
@@ -13,11 +14,13 @@ export const auth = createSlice({
   reducers: {},
   extraReducers: {
     [authApi.login.fulfilled.toString()]: (state, action) => {
-      state.token = action.payload
+      state.access_token = action.payload.access_token
+      state.refresh_token = action.payload.refresh_token
       state.authenticated = true
     },
     [authApi.registration.fulfilled.toString()]: (state, action) => {
-      state.token = action.payload
+      state.access_token = action.payload.access_token
+      state.refresh_token = action.payload.refresh_token
       state.authenticated = true
     },
   },
