@@ -34,7 +34,7 @@ export const fields = {
   },
   password: {
     label: 'Password',
-    type: 'text',
+    type: 'password',
     required: true,
     getValidation: () => yup.string().required('Please enter a password.'),
   },
