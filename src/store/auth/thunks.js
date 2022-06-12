@@ -8,7 +8,7 @@ const login = createAsyncThunk('auth/login', async (request) => {
 
     return response
   } catch (e) {
-    throw e.response.data.detail
+    throw e.response.data.detail.msg
   }
 })
 
@@ -18,11 +18,22 @@ const registration = createAsyncThunk('auth/registration', async (request) => {
 
     return response
   } catch (e) {
-    throw e.response.data.detail
+    throw e.response.data.detail.msg
+  }
+})
+
+const getMetadata = createAsyncThunk('auth/metadata', async () => {
+  try {
+    const response = await AuthService.metadata()
+
+    return response.data
+  } catch (e) {
+    throw e.response.data.detail.msg
   }
 })
 
 export const authApi = {
   login,
   registration,
+  getMetadata,
 }

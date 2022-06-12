@@ -7,12 +7,17 @@ import { Button } from '../../../../components/Button'
 import { ErrorMessage, Input } from '../../../../components/Input'
 import { fieldNames, fields } from './constants'
 import { authApi } from '../../../../store/auth/thunks'
-import { useRequestStatus } from '../../../../store'
+import { useAuth, useRequestStatus } from '../../../../store'
 import { getUnitAsPixels } from '../../../../styles/sizes'
+import { Autocomplete } from '@mui/material'
 
 export const Form = () => {
   const dispatch = useDispatch()
-  const requestStatus = useRequestStatus([authApi.registration.typePrefix])
+  const { metadata } = useAuth()
+  const requestStatus = useRequestStatus([
+    authApi.registration.typePrefix,
+    authApi.getMetadata.typePrefix,
+  ])
 
   const formik = useFormik({
     initialValues: fieldNames.reduce(
@@ -49,7 +54,31 @@ export const Form = () => {
     <FormContainer>
       {fieldNames.map((name) => {
         const field = fields[name]
-        return (
+        return field.mode === 'search' ? (
+          <Autocomplete
+            options={metadata.countries}
+            loading={requestStatus.loading[authApi.getMetadata.typePrefix]}
+            key={name}
+            onChange={(_, newValue) => {
+              formik.setFieldValue(name, newValue || '')
+            }}
+            onBlur={formik.handleBlur}
+            renderInput={(params) => (
+              <Input
+                {...params}
+                variant="outlined"
+                size="small"
+                name={name}
+                label={field.label}
+                required={field.required}
+                type={field.type}
+                value={formik.values[name]}
+                error={Boolean(formik.touched[name] && formik.errors[name])}
+                helperText={formik.touched[name] && formik.errors[name]}
+              />
+            )}
+          />
+        ) : (
           <Input
             variant="outlined"
             size="small"
@@ -61,7 +90,7 @@ export const Form = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values[name]}
-            error={formik.touched[name] && formik.errors[name]}
+            error={Boolean(formik.touched[name] && formik.errors[name])}
             helperText={formik.touched[name] && formik.errors[name]}
           />
         )

@@ -28,6 +28,7 @@ export const fields = {
   country: {
     label: 'Country',
     type: 'text',
+    mode: 'search',
     required: true,
     getValidation: () =>
       yup.string().required('Country name is a required field.'),

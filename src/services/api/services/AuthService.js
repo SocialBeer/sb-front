@@ -22,4 +22,12 @@ export class AuthService {
 
     return result
   }
+
+  static async metadata() {
+    const result = await axios.get(
+      Api.getUrl(`${this.api_name}/registration/metadata`)
+    )
+
+    return result
+  }
 }
